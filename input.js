@@ -64,7 +64,7 @@ function handleTouchMove(event) {
   }
 }
 
-export function getInputDirection() {
+export function getIputDirection() {
   lastInputDirection = inputDirection;
   return inputDirection;
 }
