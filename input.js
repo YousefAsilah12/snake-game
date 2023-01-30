@@ -8,6 +8,7 @@ let lastInputDirection = {
   x: 0,
   y: 0
 };
+let startX, startY;
 
 gameContainer.addEventListener('touchstart', handleTouchStart);
 gameContainer.addEventListener('touchmove', handleTouchMove);
@@ -27,6 +28,23 @@ function handleTouchMove(event) {
   const touchY = touch.clientY;
   const diffX = touchX - startX;
   const diffY = touchY - startY;
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    if (diffX > 0) {
+      if (lastInputDirection.x !== 0) return;
+      inputDirection = {x: 1, y: 0};
+    } else {
+      if (lastInputDirection.x !== 0) return;
+      inputDirection = {x: -1, y: 0};
+    }
+  } else {
+    if (diffY > 0) {
+      if (lastInputDirection.y !== 0) return;
+      inputDirection = {x: 0, y: 1};
+    } else {
+      if (lastInputDirection.y !== 0) return;
+      inputDirection = {x: 0, y: -1};
+    }
+  }
 }
 
 function handleKeyDown(e) {
