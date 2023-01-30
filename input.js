@@ -11,6 +11,7 @@ let lastInputDirection = {
 
 gameContainer.addEventListener('touchstart', handleTouchStart);
 gameContainer.addEventListener('touchmove', handleTouchMove);
+window.document.addEventListener('keydown', handleKeyDown);
 
 function handleTouchStart(event) {
   event.preventDefault();
@@ -26,41 +27,26 @@ function handleTouchMove(event) {
   const touchY = touch.clientY;
   const diffX = touchX - startX;
   const diffY = touchY - startY;
+}
 
-  if (Math.abs(diffX) > Math.abs(diffY)) {
-    // Horizontal swipe
-    if (diffX > 0) {
-      // Move right
-      if (lastInputDirection.x !== 0) return;
-      inputDirection = {
-        x: 1,
-        y: 0
-      };
-    } else {
-      // Move left
-      if (lastInputDirection.x !== 0) return;
-      inputDirection = {
-        x: -1,
-        y: 0
-      };
-    }
-  } else {
-    // Vertical swipe
-    if (diffY > 0) {
-      // Move down
+function handleKeyDown(e) {
+  switch (e.key) {
+    case 'ArrowUp':
       if (lastInputDirection.y !== 0) return;
-      inputDirection = {
-        x: 0,
-        y: 1
-      };
-    } else {
-      // Move up
-      if (lastInputDirection.y !== 0)return;
-      inputDirection = {
-        x: 0,
-        y: -1
-      };
-    }
+      inputDirection = {x:0, y: -1};
+      break;
+    case 'ArrowDown':
+      if (lastInputDirection.y !== 0) return;
+      inputDirection= {x:0, y: 1};
+      break;
+    case 'ArrowLeft':
+      if (lastInputDirection.x !== 0) return;
+      inputDirection= {x:-1, y: 0};
+      break;
+    case 'ArrowRight':
+      if (lastInputDirection.x !== 0) return;
+      inputDirection= {x:1, y: 0};
+      break;
   }
 }
 
