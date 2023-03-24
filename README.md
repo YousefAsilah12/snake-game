@@ -32,5 +32,9 @@
     <p>Feel free to clone the repository and modify the game to your liking.</p>
     <h2>Credits</h2>
     <p>The game was developed by YousefAsilah.</p>
+    
+    <div>
+    <h1>Demo:</h1>
+    <p>https://snake-game-yousef.netlify.app/</p>
   </body>
 </html>
